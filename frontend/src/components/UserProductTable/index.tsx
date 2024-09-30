@@ -106,13 +106,14 @@ export default function UserProductTable() {
     try {
       await removeUserProductService(removingUserProductId);
       setSuccessMsg('Produto removido do carrinho com sucesso!');
+      getUserProducts();
     } catch (e) {
       setError(
         'Houve um problema ao remover o item do carrinho, tente novamente mais tarde!'
       );
     }
     setIsOpenQuestionDialog(false);
-  }, [removingUserProductId]);
+  }, [getUserProducts, removingUserProductId]);
   useEffect(() => {
     getUserProducts();
   }, [getUserProducts]);
